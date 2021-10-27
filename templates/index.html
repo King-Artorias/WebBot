@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name='viewport' content="width=device-width,
+    initial-scale=1.0">
+    <title>Advanced Chat-Box</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- chat-box -->
+        <div class="chat-box">
+            <!-- cliente -->
+            <div class="client">
+                <img src="logo.jpg" alt=""/>
+                <div class="client-info">
+                    <h2>Simbah</h2>
+                    <p>online</p>
+                </div>
+            </div>
+
+            <!-- sección del chat principal -->
+            <div class="chats">
+                <div class="client-chat">Hi!</div>
+                <div class="my-chat">Hello</div>
+                <div class="client-chat">How i can help you?</div>
+            </div>
+
+            <!-- sección del campo de entrada -->
+            <div class="chat-input">
+                <input type='text' placeholder="Enter Message"/>
+                <button class="send-btn">
+                    <img src='send.png' alt="send-btn">
+                </button>
+            </div>
+        </div>
+
+        <!-- Botón de abajo --> <!-- Este botón le añadiremos la función de que envíe de vuelta a onezypher, y de imagen una casita -->
+        <div class="chat-btn">
+            <img src="circle.png" alt="chat box icon btn">
+        </div>
+    </div>
+
+    <script src='jquery-3.4.1.min.js'></script>
+    <script src="script.js"></script>
+    
+</body>
+
+</html>
