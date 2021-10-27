@@ -1,2 +1,2 @@
 # WebBot
-This is a example
+Entorno para el desarrollo del proyecto.
