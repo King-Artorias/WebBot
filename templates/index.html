@@ -16,7 +16,7 @@
         <div class="chat-box">
             <!-- cliente -->
             <div class="client">
-                <img src="logo.jpg" alt=""/>
+                <img src={{ url_for('static', filename='/img//logo.jpg') }} alt=""/>
                 <div class="client-info">
                     <h2>Simbah</h2>
                     <p>online</p>
@@ -24,7 +24,7 @@
             </div>
 
             <!-- sección del chat principal -->
-            <div class="chats">
+            <div class="chats" id="chats">
                 <div class="client-chat">Hi!</div>
                 <div class="my-chat">Hello</div>
                 <div class="client-chat">How i can help you?</div>
@@ -32,22 +32,50 @@
 
             <!-- sección del campo de entrada -->
             <div class="chat-input">
-                <input type='text' placeholder="Enter Message"/>
+                <input type='text' placeholder="Enter Message" id="messageText" onkeypress="pulsar(event)">
                 <button class="send-btn">
-                    <img src='send.png' alt="send-btn">
+                    <img src={{ url_for('static', filename='/img/send.png') }} alt="send-btn" onclick="sendMsg()">
                 </button>
             </div>
         </div>
 
         <!-- Botón de abajo --> <!-- Este botón le añadiremos la función de que envíe de vuelta a onezypher, y de imagen una casita -->
         <div class="chat-btn">
-            <img src="circle.png" alt="chat box icon btn">
+            <img src={{ url_for('static', filename='/img/circle.png') }} alt="chat box icon btn">
         </div>
     </div>
 
-    <script src='jquery-3.4.1.min.js'></script>
-    <script src="script.js"></script>
-    
-</body>
+<script src={{ url_for("static", filename="socket.io.js") }}></script>
+<script type="text/javascript">
 
+const socket = io();
+var TEXTCHAT=document.getElementById("chats");
+
+function sendMsg() {
+    var msg=document.getElementById('messageText').value
+    socket.emit("messageUser", msg);
+    TEXTCHAT.innerHTML +=`<div class="my-chat">${msg}</div>`;
+    document.getElementById('messageText').value="";
+
+};
+
+socket.on('messageBot', function(msg){
+    TEXTCHAT.innerHTML += `<div class="client-chat">${msg}</div>`;
+    TEXTCHAT.scrollTo(0,TEXTCHAT.scrollTopMax);
+});
+
+
+function pulsar(e) {
+    if (e.keyCode === 13 && !e.shiftKey) {
+        var msg=document.getElementById('messageText').value
+        socket.emit("messageUser", msg);
+        TEXTCHAT.innerHTML +=`<div class="my-chat">${msg}</div>`;
+        document.getElementById('messageText').value="";
+
+    }
+}
+</script>
+
+
+</body>
 </html>

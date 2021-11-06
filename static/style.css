@@ -69,6 +69,8 @@ body {
     color: #fff;
     position: relative;
     font-size: 0.9em;
+    max-height:300px;
+    overflow: auto;
 }
 
 .client-chat {
