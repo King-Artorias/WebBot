@@ -82,7 +82,7 @@ def unknow():
 
 
 app=Flask(__name__) #la aplicación
-socketio = SocketIO(app) #socketio
+socketio = SocketIO(app, cors_allowed_origins="*") #socketio
 app.secret_key="secret_key" #un código secreto, para realizar peticiones GET, POST
 
 
