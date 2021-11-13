@@ -48,6 +48,10 @@ def check_all_messages(message):
             nonlocal highest_prob
             highest_prob[bot_response] = message_probability(message, list_of_words, single_response, required_words)
 
+        response('Hello',['hi', 'hello', "what's up", 'wassup'], single_response=True)
+        response('Fine, and you?', ['how', 'are', 'you'], required_words=['are'])
+        response("that's fine",["i'm", 'i am', 'fine', 'good'], single_response=True)
+        response('You can´t say that', ['tits', 'porn', 'ass'], single_response=True)
         response("Investing should be started by doing your research and finding assets that you can commit to, once that's done- you need to follow 1 principle. *lay out cash today to get more back in the future.", ['how','do','you','start','investing', 'i','can'], required_words=['how'])
         response('To get rich in the stock market, you need patience and emotional stability- buy sound businesses at fair prices and watch your money grow.',['how', 'do','i','you','can', 'get','rich','the','stock','market','with', 'stonks'],required_words=['how'])
         response('sure, you just have to know what you are doing',['i','can','me','rich','stock','stock','with','market'], required_words=['me'])
